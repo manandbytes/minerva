@@ -1,0 +1,11 @@
+language: java
+env:
+  matrix:
+    - TARGET_PLATFORM=kepler
+    - TARGET_PLATFORM=indigo
+    - TARGET_PLATFORM=juno
+before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+install: true
+script: mvn -Dtycho.showEclipseLog=true -Dplatform-version-name=$TARGET_PLATFORM verify
